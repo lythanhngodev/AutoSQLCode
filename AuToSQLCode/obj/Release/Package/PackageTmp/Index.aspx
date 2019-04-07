@@ -172,12 +172,11 @@
                 $(this).is(':checked') && (
                     array.push($(this).attr('name').split(' ')[0]),
                     array_del.push($(this).attr('name').split(' ')[0]),
-                    array_update.push($(this).attr('name').split(' ')[0] + " = @" + $(this).attr('name').split(' ')[1]),
+                    array_update.push($(this).attr('name').split(' ')[0] + " = @" + $(this).attr('name').split(' ')[0]),
                     array_proc_par.push(['@' + $(this).attr('name').split(' ')[0] + ' ' + $(this).attr('name').split(' ')[1]]),
                     array_SqlParameter.push([$(this).attr('name').split(' ')[0], $(this).attr('kieuthuan')])
                 )
             });
-            console.log(array_proc_par);
             var stringjoin = array.join(", "), string_join_param = "\t\t@" + array.join(",\n\t\t@"), stringjoin_update = '\t' + array_update.join(",\n\t");
             var string_proc_par = array_proc_par.join(",\n");
             array.length = 0;
@@ -268,7 +267,9 @@
             var obj = mau();
             var where = null;
             try {
+               
                 where = obj[0].split(", ")[0];
+                //console.log(obj[2]);
                 $('#ketqua').val(`UPDATE ${$('#selBang').val()}\nSET\n  ${obj[2]}\nWHERE ${where} = @${where}`);
                 $('#par').val(`${obj[4]}`);
                 Param((obj[0].split(", ")));

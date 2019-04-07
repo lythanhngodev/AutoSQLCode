@@ -33,3 +33,4 @@ D:\Cong ty\NhatTam\AuToSQLCode\AuToSQLCode\AuToSQLCode\obj\Debug\AuToSQLCode.pdb
 D:\Cong ty\NhatTam\AuToSQLCode\AuToSQLCode\AuToSQLCode\bin\AuToSQLCode.dll.config
 D:\Cong ty\NhatTam\AuToSQLCode\AuToSQLCode\AuToSQLCode\obj\Debug\AuToSQLCode.csproj.CoreCompileInputs.cache
 D:\Cong ty\NhatTam\AuToSQLCode\AuToSQLCode\AuToSQLCode\obj\Debug\AuToSQLCode.csproj.CopyComplete
+D:\Cong ty\NhatTam\AuToSQLCode\AuToSQLCode\AuToSQLCode\obj\Debug\AuToSQLCode.csprojAssemblyReference.cache
