@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AuToSQLCode.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>AuToSQLCode</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <script src="Content/Theme_1/js/jquery-2.1.4.min.js"></script>
+    <link href="Content/Theme_1/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="Content/Theme_1/js/bootstrap.min.js"></script>
+    <link href="Content/Theme_1/css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="Content/Theme_1/css/select2.min.css" rel="stylesheet" />
+    <script src="Content/Theme_1/js/select2.min.js"></script>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">AutoSQLCode SQL Sever</a>
+      </nav>
+</head>
+<body>
+    <form runat="server">
+    <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+    <footer class="footer">
+      <div class="container-fluid" style="text-align:right">
+          <hr />
+        <span class="text-muted" >&copy; Copyright by <b><a href="https://fb.com/ly.ngothanh" target="_blank">Lý Thanh Ngô</a></b>.</span>
+          <hr />
+      </div>
+    </footer>
+    </form>
+</body>
+</html>
