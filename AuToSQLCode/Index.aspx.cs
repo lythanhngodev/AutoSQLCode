@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -73,31 +73,41 @@ namespace AuToSQLCode
 	                    TenCot = COLUMN_NAME,
 	                    Kieu = (CASE
 				                    WHEN 
-					                     LOWER(DATA_TYPE)='uniqueidentifier' OR 
-					                     LOWER(DATA_TYPE)='int' OR 
-					                     LOWER(DATA_TYPE)='bit' 
+						                    LOWER(DATA_TYPE)='uniqueidentifier' OR 
+						                    LOWER(DATA_TYPE)='int' OR 
+						                    LOWER(DATA_TYPE)='bit' 
 						                    THEN DATA_TYPE 
 				                    WHEN 
-					                     LOWER(DATA_TYPE)='char' OR 
-				                         LOWER(DATA_TYPE)='nchar' OR
-					                     LOWER(DATA_TYPE)='binary'
+						                    LOWER(DATA_TYPE)='char' OR 
+						                    LOWER(DATA_TYPE)='nchar' OR
+						                    LOWER(DATA_TYPE)='binary'
 						                    THEN DATA_TYPE+'('+CONVERT(NVARCHAR(50),CHARACTER_MAXIMUM_LENGTH)+')'
 				                    WHEN 
-					                     LOWER(DATA_TYPE)='nvarchar' OR 
-					                     LOWER(DATA_TYPE)='varchar' THEN DATA_TYPE+'(MAX)'
+						                    LOWER(DATA_TYPE)='nvarchar' OR 
+						                    LOWER(DATA_TYPE)='varchar' THEN DATA_TYPE+'(MAX)'
 				                    WHEN 
-					                     LOWER(DATA_TYPE)='decimal' OR LOWER(DATA_TYPE)='numeric' THEN DATA_TYPE+'('+(SELECT CONVERT(NVARCHAR(10),i.NUMERIC_PRECISION) FROM INFORMATION_SCHEMA.COLUMNS i WHERE i.COLUMN_NAME = isc.COLUMN_NAME) + ',' + (SELECT CONVERT(NVARCHAR(10),k.NUMERIC_SCALE) FROM INFORMATION_SCHEMA.COLUMNS k WHERE k.COLUMN_NAME = isc.COLUMN_NAME) + ')'
+						                    LOWER(DATA_TYPE)='decimal' OR LOWER(DATA_TYPE)='numeric' 
+						                    THEN DATA_TYPE+'('+(
+												                    SELECT CONVERT(NVARCHAR(10),i.NUMERIC_PRECISION) 
+												                    FROM INFORMATION_SCHEMA.COLUMNS i 
+												                    WHERE i.COLUMN_NAME = isc.COLUMN_NAME AND I.TABLE_NAME = isc.TABLE_NAME
+												                    ) + ',' + 
+											                    (
+												                    SELECT CONVERT(NVARCHAR(10),k.NUMERIC_SCALE) 
+												                    FROM INFORMATION_SCHEMA.COLUMNS k 
+												                    WHERE k.COLUMN_NAME = isc.COLUMN_NAME AND k.TABLE_NAME = isc.TABLE_NAME
+											                    ) + ')'
 				                    WHEN 
-					                     LOWER(DATA_TYPE)='tinyint' OR 
-					                     LOWER(DATA_TYPE)='xml' OR 
-					                     LOWER(DATA_TYPE)='date' OR
-					                     LOWER(DATA_TYPE)='timestamp' OR
-					                     LOWER(DATA_TYPE)='text' OR
-					                     LOWER(DATA_TYPE)='money' OR
-					                     LOWER(DATA_TYPE)='float' OR
-					                     LOWER(DATA_TYPE)='bigint' OR
-                                         LOWER(DATA_TYPE)='datetime' OR
-					                     LOWER(DATA_TYPE)='smalldatetime'
+						                    LOWER(DATA_TYPE)='tinyint' OR 
+						                    LOWER(DATA_TYPE)='xml' OR 
+						                    LOWER(DATA_TYPE)='date' OR
+						                    LOWER(DATA_TYPE)='timestamp' OR
+						                    LOWER(DATA_TYPE)='text' OR
+						                    LOWER(DATA_TYPE)='money' OR
+						                    LOWER(DATA_TYPE)='float' OR
+						                    LOWER(DATA_TYPE)='bigint' OR
+						                    LOWER(DATA_TYPE)='datetime' OR
+						                    LOWER(DATA_TYPE)='smalldatetime'
 						                    THEN DATA_TYPE
 			                    END),
                     KieuThuan = LOWER(DATA_TYPE)
